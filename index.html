@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebAuto Test Site</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+            margin: 2rem;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .info-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .info-card h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .status {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+        }
+        
+        .timestamp {
+            color: #999;
+            font-size: 0.8rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 2rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🚀</div>
+        <h1>WebAuto Test Site</h1>
+        <p class="subtitle">Auto-deployment system test website</p>
+        
+        <div class="status">✅ Deployment Successful</div>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>🌐 Domain</h3>
+                <p id="domain">web1.zfus.net</p>
+            </div>
+            
+            <div class="info-card">
+                <h3>🐳 Container</h3>
+                <p>Docker Nginx</p>
+            </div>
+            
+            <div class="info-card">
+                <h3>📦 Version</h3>
+                <p id="version">v1.0.0</p>
+            </div>
+            
+            <div class="info-card">
+                <h3>🔄 Auto-Deploy</h3>
+                <p>GitHub Webhook</p>
+            </div>
+        </div>
+        
+        <div class="timestamp">
+            Last deployed: <span id="timestamp"></span>
+        </div>
+    </div>
+    
+    <script>
+        // Set current timestamp
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+        
+        // Set domain from window location
+        if (window.location.hostname !== 'localhost') {
+            document.getElementById('domain').textContent = window.location.hostname;
+        }
+        
+        // Add some interactivity
+        document.querySelector('.container').addEventListener('click', function() {
+            this.style.transform = 'scale(1.02)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 200);
+        });
+    </script>
+</body>
+</html>
